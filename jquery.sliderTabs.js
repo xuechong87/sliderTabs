@@ -212,13 +212,13 @@
 			// Panel arrows
 
 			// Mousehweel
-			$container.bind('mousewheel', function(event, delta, deltaX, deltaY) {
-			    if(delta > 0)
-			    	plugin.next();
-			   	else if(delta < 0)
-			   		plugin.prev();
-			   	return false;
-			});
+			// $container.bind('mousewheel', function(event, delta, deltaX, deltaY) {
+			//     if(delta > 0)
+			//     	plugin.next();
+			//    	else if(delta < 0)
+			//    		plugin.prev();
+			//    	return false;
+			// });
 		}
 
 		/*
@@ -350,8 +350,8 @@
 
 		// Hide panel arrows
 		plugin.hidePanelArrows = function(){
-			if($leftPanelArrow) $leftPanelArrow.hide();
-			if($rightPanelArrow) $rightPanelArrow.hide();
+			if($leftPanelArrow){ $leftPanelArrow.hide();}
+			if($rightPanelArrow) {$rightPanelArrow.hide();}
 		};
 
 		/*
@@ -374,17 +374,19 @@
 				leftOffset = tabOffset.left - containerOffset.left,
 				rightOffset = (containerOffset.left + $tabsListContainer.outerWidth()) - (tabOffset.left + tab.outerWidth() );
 			
-			if(leftOffset < 0)
+			if(leftOffset < 0){
 				plugin.slideTabs('right', -leftOffset);
-			else if(rightOffset < 0)
+			}
+			else if(rightOffset < 0){
 				plugin.slideTabs('left', -rightOffset);
+			}
 		};
 
 		// Reposition content panels so that they are ready to be transitioned in and out.
 		// This depends on whether the transition is set to slide or fade
 		var reorderPanels = function(){
 			// Position content divs
-			if(settings.transition == 'slide')
+			if(settings.transition == 'slide'){
 				// Move panels left/right basedon their index relative to the selected panel
 				$tabsList.children('li').each(function(index, el){
 					var selectedIndex = $tabsList.children('.selected').index(),
@@ -397,8 +399,9 @@
 					else
 						panel.addClass(settings.classes.panelActive);
 				});
+			}
 			
-			if(settings.transition == 'fade')
+			if(settings.transition == 'fade'){
 				// Set opacity to correct value for non selected panels.
 				$tabsList.children('li').each(function(index, el){
 					var selectedIndex = $tabsList.children('.selected').index(),
@@ -409,6 +412,7 @@
 					else
 						panel.addClass(settings.classes.panelActive);
 				});
+			}
 		};
 		
 		// Object determining css properties to be animated to based on various actions, transitions, and directions
